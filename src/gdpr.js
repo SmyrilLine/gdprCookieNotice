@@ -27,6 +27,7 @@ var gdprCookieNotice = {
     cookiesAccepted: false,
     xd_cookie: null,
     currentCookieSelection: null,
+    acceptedCookies: {},
     config: null,
     acceptCallback: null,
     categories: [],
@@ -166,6 +167,7 @@ var gdprCookieNotice = {
 
         // Load marketing scripts that only works when cookies are accepted
         gdprCookieNotice.dispatchSuccess(value);
+        gdprCookieNotice.acceptedCookies = value;
         gdprCookieNotice.loadScripts();
 
         gdprCookieNotice.hideModal();
@@ -173,6 +175,8 @@ var gdprCookieNotice = {
         if (gdprCookieNotice.acceptCallback) {
             gdprCookieNotice.acceptCallback(value);
         }
+
+        gdprCookieNotice.cookiesAccepted = true;
     },
     loadScripts: function(detail) {
         var cTypes = ['extra'];

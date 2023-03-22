@@ -383,9 +383,7 @@ var gdprCookieNotice = {
         return defaultSubSplitSummed;
     },
     getConsentGivenFor: function (cookieName) {
-        var cookieName = gdprCookieNotice.pluginPrefix + '_' + cookieName;
-        var cookieValue = gdprCookieNotice.getCookie(cookieName);
-        if (cookieValue === 'true') {
+        if (gdprCookieNotice.acceptedCookies[cookieName] == true) {
             return true;
         } else {
             return false;
